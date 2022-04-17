@@ -7,6 +7,16 @@ using UnityEditor.VFX.Operator;
 
 namespace UnityEditor.VFX.Block
 {
+<<<<<<< HEAD
+    [VFXInfo(category = "Position", experimental = true, variantProvider = typeof(PositionBaseProvider))]
+    class PositionMesh : PositionBase
+    {
+
+        [VFXSetting, SerializeField, Tooltip("Specifies how Unity handles the sample when the custom vertex index is out the out of bounds of the vertex array.")]
+        private VFXOperatorUtility.SequentialAddressingMode mode = VFXOperatorUtility.SequentialAddressingMode.Clamp;
+
+        public override string name { get { return string.Format(base.name, "Mesh"); ; } }
+=======
     class PositionMeshProvider : VariantProvider
     {
         protected override sealed Dictionary<string, object[]> variants
@@ -46,6 +56,7 @@ namespace UnityEditor.VFX.Block
                     return "Position (Skinned Mesh)";
             }
         }
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
         public class CustomPropertiesMesh
         {
@@ -65,6 +76,8 @@ namespace UnityEditor.VFX.Block
             public uint vertex = 0;
         }
 
+<<<<<<< HEAD
+=======
         public class CustomPropertiesEdge
         {
             [Tooltip("Sets the start index of the edge. The Block uses this index and the next index to render the line.")]
@@ -92,6 +105,7 @@ namespace UnityEditor.VFX.Block
             public Vector2 square;
         }
 
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         protected override bool needDirectionWrite { get { return true; } }
         protected override bool supportsVolumeSpawning { get { return false; } }
 
@@ -223,12 +237,15 @@ namespace UnityEditor.VFX.Block
                         throw new InvalidOperationException("Unexpected placement mode : " + placementMode);
                 }
 
+<<<<<<< HEAD
+=======
                 if (compositionPosition == AttributeCompositionMode.Blend)
                     properties = properties.Concat(PropertiesFromType(nameof(CustomPropertiesBlendPosition)));
 
                 if (compositionDirection == AttributeCompositionMode.Blend)
                     properties = properties.Concat(PropertiesFromType(nameof(CustomPropertiesBlendDirection)));
 
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 return properties;
             }
         }

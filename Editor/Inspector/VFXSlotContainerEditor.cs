@@ -66,9 +66,14 @@ class VFXSlotContainerEditor : Editor
         {
             var fieldInfo = prop.Key.field;
             EditorGUI.BeginChangeCheck();
+<<<<<<< HEAD
+            var attrs = fieldInfo.GetCustomAttributes(typeof(StringProviderAttribute), true);
+            if (attrs.Length > 0)
+=======
             var stringAttribute = fieldInfo.GetCustomAttributes<StringProviderAttribute>(true);
             var rangeAttribute = fieldInfo.GetCustomAttributes<RangeAttribute>(false).FirstOrDefault();
             if (stringAttribute.Any())
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             {
                 var strings = StringPropertyRM.FindStringProvider(stringAttribute.ToArray())();
 
@@ -135,7 +140,11 @@ class VFXSlotContainerEditor : Editor
                     }
                 }
             }
+<<<<<<< HEAD
+            if(EditorGUI.EndChangeCheck())
+=======
             if (EditorGUI.EndChangeCheck())
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             {
                 modifiedSetting = prop.Value;
             }

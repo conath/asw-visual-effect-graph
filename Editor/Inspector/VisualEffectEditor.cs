@@ -149,7 +149,11 @@ namespace UnityEditor.VFX
                 return false;
             }
             EditorGUILayout.BeginHorizontal();
+<<<<<<< HEAD
+            
+=======
 
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             var height = 18f;
             if (!EditorGUIUtility.wideMode && GenerateMultipleField(ref parameter, valueProperty))
             {
@@ -801,7 +805,11 @@ namespace UnityEditor.VFX
             EditorGUI.indentLevel = 0;
             if (serializedObject.ApplyModifiedProperties())
             {
+<<<<<<< HEAD
+                var window = EditorWindow.GetWindow<VFXViewWindow>();
+=======
                 var window = WindowLayout.FindEditorWindowOfType(typeof(VFXViewWindow)) as VFXViewWindow;
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 if (window != null)
                     window.OnVisualEffectComponentChanged(targets.Cast<VisualEffect>());
             }
@@ -1172,8 +1180,11 @@ namespace UnityEditor.VFX
             private SerializedObject m_SerializedRenderers;
 
             private SerializedProperty m_RendererPriority;
+<<<<<<< HEAD
+=======
             private SerializedProperty m_SortingLayerID;
             private SerializedProperty m_SortingOrder;
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             private SerializedProperty m_RenderingLayerMask;
             private SerializedProperty m_LightProbeUsage;
             private SerializedProperty m_LightProbeVolumeOverride;
@@ -1192,8 +1203,11 @@ namespace UnityEditor.VFX
                 m_SerializedRenderers = new SerializedObject(m_Renderers);
 
                 m_RendererPriority = m_SerializedRenderers.FindProperty("m_RendererPriority");
+<<<<<<< HEAD
+=======
                 m_SortingOrder = m_SerializedRenderers.FindProperty("m_SortingOrder");
                 m_SortingLayerID = m_SerializedRenderers.FindProperty("m_SortingLayerID");
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 m_RenderingLayerMask = m_SerializedRenderers.FindProperty("m_RenderingLayerMask");
                 m_LightProbeUsage = m_SerializedRenderers.FindProperty("m_LightProbeUsage");
                 m_LightProbeVolumeOverride = m_SerializedRenderers.FindProperty("m_LightProbeVolumeOverride");
@@ -1204,11 +1218,19 @@ namespace UnityEditor.VFX
             public static readonly string[] s_DefaultRenderingLayerNames = GetDefaultRenderingLayerNames();
             private static string[] GetDefaultRenderingLayerNames()
             {
+<<<<<<< HEAD
+                //Find UnityEditor.RendererEditorBase.defaultRenderingLayerNames by reflection to avoid any breakage due to an API change
+                var type = Type.GetType("UnityEditor.RendererEditorBase, UnityEditor");
+                if (type != null)
+                {
+                    var property = type.GetProperty("defaultRenderingLayerNames", BindingFlags.Static | BindingFlags.GetField | BindingFlags.NonPublic);
+=======
                 //Find UnityEditor.RendererEditorBase.defaultPrefixedRenderingLayerNames by reflection to avoid any breakage due to an API change
                 var type = Type.GetType("UnityEditor.RendererEditorBase, UnityEditor");
                 if (type != null)
                 {
                     var property = type.GetProperty("defaultPrefixedRenderingLayerNames", BindingFlags.Static | BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Public);
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                     if (property != null)
                     {
                         var invokeResult = property.GetMethod.Invoke(null, null);
@@ -1219,6 +1241,8 @@ namespace UnityEditor.VFX
                 return null;
             }
 
+<<<<<<< HEAD
+=======
             public static readonly Action<GUIContent, SerializedProperty, GUIStyle, GUIStyle> s_fnGetSortingLayerField = GetSortingLayerField();
 
             private static Action<GUIContent, SerializedProperty, GUIStyle, GUIStyle> GetSortingLayerField()
@@ -1256,14 +1280,18 @@ namespace UnityEditor.VFX
                 return property != null && property.serializedObject.targetObjectsCount == 1 && property.isInstantiatedPrefab && property.prefabOverride;
             }
 
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             public void OnInspectorGUI()
             {
                 m_SerializedRenderers.Update();
 
+<<<<<<< HEAD
+=======
                 EditorGUI.indentLevel += 1;
                 // Ugly hack to indent the header group because "indentLevel" is not taken into account
                 var x = EditorStyles.inspectorDefaultMargins.padding.left;
                 EditorStyles.inspectorDefaultMargins.padding.left -= 24;
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 bool showProbesCategory = EditorGUILayout.BeginFoldoutHeaderGroup(m_ShowProbesCategory, Contents.probeSettings);
                 if (showProbesCategory != m_ShowProbesCategory)
                 {
@@ -1273,6 +1301,10 @@ namespace UnityEditor.VFX
 
                 if (m_ShowProbesCategory)
                 {
+<<<<<<< HEAD
+                    if (m_ReflectionProbeUsage != null && SupportedRenderingFeatures.active.reflectionProbes)
+                    {
+=======
                     bool showReflectionProbeUsage = m_ReflectionProbeUsage != null && SupportedRenderingFeatures.active.reflectionProbes;
 
                     var srpAsset = QualitySettings.renderPipeline ?? GraphicsSettings.renderPipelineAsset;
@@ -1285,6 +1317,7 @@ namespace UnityEditor.VFX
 
                     if (showReflectionProbeUsage)
                     {
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                         Rect r = EditorGUILayout.GetControlRect(true, EditorGUI.kSingleLineHeight, EditorStyles.popup);
                         EditorGUI.BeginProperty(r, Contents.reflectionProbeUsageStyle, m_ReflectionProbeUsage);
                         EditorGUI.BeginChangeCheck();
@@ -1335,7 +1368,11 @@ namespace UnityEditor.VFX
                         string[] layerNames = null;
                         var srpAsset = GraphicsSettings.currentRenderPipeline;
                         if (srpAsset != null)
+<<<<<<< HEAD
+                            layerNames = srpAsset.renderingLayerMaskNames;
+=======
                             layerNames = srpAsset.prefixedRenderingLayerMaskNames;
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
                         if (layerNames == null)
                             layerNames = s_DefaultRenderingLayerNames;
@@ -1374,6 +1411,15 @@ namespace UnityEditor.VFX
                         EditorGUILayout.PropertyField(m_RendererPriority, Contents.rendererPriorityStyle);
                     }
 
+<<<<<<< HEAD
+                    //As classic MeshRenderer, VisualEffect doesn't support the single mesh batching of UI.
+                    //if (m_SortingOrder != null && m_SortingLayerID != null)
+                    //{
+                    //    SortingLayerEditorUtility.RenderSortingLayerFields(m_SortingOrder, m_SortingLayerID);
+                    //}
+                }
+                EditorGUILayout.EndFoldoutHeaderGroup();
+=======
                     if (m_SortingOrder != null && m_SortingLayerID != null)
                     {
                         var hasPrefabOverride = HasPrefabOverride(m_SortingLayerID);
@@ -1384,12 +1430,25 @@ namespace UnityEditor.VFX
                 EditorGUILayout.EndFoldoutHeaderGroup();
                 EditorStyles.inspectorDefaultMargins.padding.left = x;
                 EditorGUI.indentLevel -= 1;
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
                 m_SerializedRenderers.ApplyModifiedProperties();
             }
 
             private static class Contents
             {
+<<<<<<< HEAD
+                public static readonly GUIContent renderingLayerMaskStyle =         EditorGUIUtility.TrTextContent("Rendering Layer Mask", "Mask that can be used with SRP DrawRenderers command to filter renderers outside of the normal layering system.");
+                public static readonly GUIContent rendererPriorityStyle =           EditorGUIUtility.TrTextContent("Priority", "Priority used for sorting objects on top of material render queue.");
+                public static readonly GUIContent lightProbeUsageStyle =            EditorGUIUtility.TrTextContent("Light Probes", "Specifies how Light Probes will handle the interpolation of lighting and occlusion.");
+                public static readonly GUIContent reflectionProbeUsageStyle =       EditorGUIUtility.TrTextContent("Reflection Probes", "Specifies if or how the object is affected by reflections in the Scene.  This property cannot be disabled in deferred rendering modes.");
+                public static readonly GUIContent lightProbeVolumeOverrideStyle =   EditorGUIUtility.TrTextContent("Proxy Volume Override", "If set, the Renderer will use the Light Probe Proxy Volume component from another GameObject.");
+                public static readonly GUIContent lightProbeAnchorStyle =           EditorGUIUtility.TrTextContent("Anchor Override", "Specifies the Transform position that will be used for sampling the light probes and reflection probes.");
+                public static readonly GUIContent lightProbeVolumeUnsupportedNote = EditorGUIUtility.TrTextContent("The Light Probe Proxy Volume feature is unsupported by the current graphics hardware or API configuration. Simple 'Blend Probes' mode will be used instead.");
+
+                public static readonly GUIContent probeSettings =                   EditorGUIUtility.TrTextContent("Probes");
+                public static readonly GUIContent otherSettings =                   EditorGUIUtility.TrTextContent("Additional Settings");
+=======
                 public static readonly GUIContent renderingLayerMaskStyle = EditorGUIUtility.TrTextContent("Rendering Layer Mask", "Mask that can be used with SRP DrawRenderers command to filter renderers outside of the normal layering system.");
                 public static readonly GUIContent rendererPriorityStyle = EditorGUIUtility.TrTextContent("Priority", "Priority used for sorting objects on top of material render queue.");
                 public static readonly GUIContent lightProbeUsageStyle = EditorGUIUtility.TrTextContent("Light Probes", "Specifies how Light Probes will handle the interpolation of lighting and occlusion.");
@@ -1405,6 +1464,7 @@ namespace UnityEditor.VFX
                 public static readonly GUIContent sortingOrderStyle = EditorGUIUtility.TrTextContent("Order in Layer", "Renderer's order within a sorting layer");
 
                 public static readonly GUIStyle boldPopupStyle = new GUIStyle(EditorStyles.popup) { fontStyle = FontStyle.Bold };
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             }
         }
 
@@ -1415,6 +1475,17 @@ namespace UnityEditor.VFX
             public static readonly GUIContent headerProperties = EditorGUIUtility.TrTextContent("Properties");
             public static readonly GUIContent headerRenderer = EditorGUIUtility.TrTextContent("Renderer");
 
+<<<<<<< HEAD
+            public static readonly GUIContent assetPath =           EditorGUIUtility.TrTextContent("Asset Template", "Sets the Visual Effect Graph asset to be used in this component.");
+            public static readonly GUIContent randomSeed =          EditorGUIUtility.TrTextContent("Random Seed", "Sets the value used when determining the randomness of the graph. Using the same seed will make the Visual Effect play identically each time.");
+            public static readonly GUIContent reseedOnPlay =        EditorGUIUtility.TrTextContent("Reseed on play", "When enabled, a new random seed value will be used each time the effect is played. Enable to randomize the look of this Visual Effect.");
+            public static readonly GUIContent openEditor =          EditorGUIUtility.TrTextContent("Edit", "Opens the currently assigned template for editing within the Visual Effect Graph window.");
+            public static readonly GUIContent createAsset =         EditorGUIUtility.TrTextContent("New", "Creates a new Visual Effect Graph and opens it for editing within the Visual Effect Graph window.");
+            public static readonly GUIContent setRandomSeed =       EditorGUIUtility.TrTextContent("Reseed", "When clicked, if ‘Reseed on play’ is disabled a new random seed will be generated.");
+            public static readonly GUIContent resetInitialEvent =   EditorGUIUtility.TrTextContent("Default");
+            public static readonly GUIContent setPlayRate =         EditorGUIUtility.TrTextContent("Set");
+            public static readonly GUIContent playRate =            EditorGUIUtility.TrTextContent("Rate");
+=======
             public static readonly GUIContent assetPath = EditorGUIUtility.TrTextContent("Asset Template", "Sets the Visual Effect Graph asset to be used in this component.");
             public static readonly GUIContent randomSeed = EditorGUIUtility.TrTextContent("Random Seed", "Sets the value used when determining the randomness of the graph. Using the same seed will make the Visual Effect play identically each time.");
             public static readonly GUIContent reseedOnPlay = EditorGUIUtility.TrTextContent("Reseed on play", "When enabled, a new random seed value will be used each time the effect is played. Enable to randomize the look of this Visual Effect.");
@@ -1424,6 +1495,7 @@ namespace UnityEditor.VFX
             public static readonly GUIContent resetInitialEvent = EditorGUIUtility.TrTextContent("Default");
             public static readonly GUIContent setPlayRate = EditorGUIUtility.TrTextContent("Set");
             public static readonly GUIContent playRate = EditorGUIUtility.TrTextContent("Rate");
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
             public static readonly GUIContent graphInBundle = EditorGUIUtility.TrTextContent("Exposed properties are hidden in the Inspector when Visual Effect Assets are stored in Asset Bundles.");
 

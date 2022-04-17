@@ -323,6 +323,12 @@ namespace UnityEditor.VFX.UI
 
             set
             {
+<<<<<<< HEAD
+                if (m_ComponentBoard.parent == null)
+                    m_ToggleComponentBoard.value = true;
+
+=======
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 if (value == null)
                     m_ComponentBoard.Detach();
                 else
@@ -386,6 +392,10 @@ namespace UnityEditor.VFX.UI
 
         public VFXNodeController AddNode(VFXNodeProvider.Descriptor d, Vector2 mPos)
         {
+<<<<<<< HEAD
+
+=======
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             UpdateSelectionWithNewNode();
             var groupNode = GetPickedGroupNode(mPos);
 
@@ -776,7 +786,11 @@ namespace UnityEditor.VFX.UI
                 targetParent.Add(badge);
                 badge.AttachTo(target, alignement);
 
+<<<<<<< HEAD
+                if(errorOrigin == VFXErrorOrigin.Compilation)
+=======
                 if (errorOrigin == VFXErrorOrigin.Compilation)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 {
                     m_CompileBadges.Add(badge);
                 }
@@ -832,7 +846,11 @@ namespace UnityEditor.VFX.UI
             }
             else
             {
+<<<<<<< HEAD
+                if (!object.ReferenceEquals(model,null))
+=======
                 if (!object.ReferenceEquals(model, null))
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 {
                     List<IconBadge> badges;
                     if (m_InvalidateBadges.TryGetValue(model, out badges))
@@ -847,6 +865,10 @@ namespace UnityEditor.VFX.UI
                 }
                 else
                     throw new InvalidOperationException("Can't clear in Invalidate mode without a model");
+<<<<<<< HEAD
+
+=======
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             }
         }
 
@@ -965,6 +987,14 @@ namespace UnityEditor.VFX.UI
                 Insert(childCount - 1, m_ComponentBoard);
                 BoardPreferenceHelper.SetVisible(BoardPreferenceHelper.Board.componentBoard, true);
                 m_ComponentBoard.RegisterCallback<GeometryChangedEvent>(OnFirstComponentBoardGeometryChanged);
+<<<<<<< HEAD
+            }
+            else
+            {
+                m_ComponentBoard.RemoveFromHierarchy();
+                BoardPreferenceHelper.SetVisible(BoardPreferenceHelper.Board.componentBoard, false);
+            }
+=======
             }
             else
             {
@@ -972,6 +1002,7 @@ namespace UnityEditor.VFX.UI
                 BoardPreferenceHelper.SetVisible(BoardPreferenceHelper.Board.componentBoard, false);
             }
             m_ComponentBoard.RefreshInitializeErrors();
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
 
         void OnFirstComponentBoardGeometryChanged(GeometryChangedEvent e)
@@ -1015,9 +1046,15 @@ namespace UnityEditor.VFX.UI
 
         void Delete(string cmd, AskUser askUser)
         {
+<<<<<<< HEAD
+            var selection = this.selection.ToArray();
+            var parametersToRemove = Enumerable.Empty<VFXParameterController>();
+            foreach (var category in selection.OfType<VFXBlackboardCategory>())
+=======
             var currentSelection = selection.ToArray();
             var parametersToRemove = Enumerable.Empty<VFXParameterController>();
             foreach (var category in currentSelection.OfType<VFXBlackboardCategory>())
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             {
                 parametersToRemove = parametersToRemove.Concat(controller.RemoveCategory(m_Blackboard.GetCategoryIndex(category)));
             }
@@ -1128,9 +1165,12 @@ namespace UnityEditor.VFX.UI
                 m_NoAssetLabel.RemoveFromHierarchy();
                 m_Toolbar.SetEnabled(true);
 
+<<<<<<< HEAD
+=======
                 m_AttachDropDownButton.SetEnabled(this.controller.graph.visualEffectResource.subgraph == null);
                 m_LockToggle.SetEnabled(this.controller.graph.visualEffectResource.subgraph == null);
 
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 if (IsAssetEditable())
                 {
                     m_LockedElement.style.display = DisplayStyle.None;
@@ -1648,7 +1688,12 @@ namespace UnityEditor.VFX.UI
 
         void OnSave()
         {
+<<<<<<< HEAD
+            var graphToSave = new HashSet<VFXGraph>();
+            GetGraphsRecursively(controller.graph,graphToSave);
+=======
             m_ComponentBoard?.DeactivateBoundsRecordingIfNeeded(); //Avoids saving the graph with unnecessary bounds computations
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
             var graphToSave = new HashSet<VFXGraph>();
             GetGraphsRecursively(controller.graph, graphToSave);
@@ -1657,6 +1702,9 @@ namespace UnityEditor.VFX.UI
                 if (EditorUtility.IsDirty(graph) || UnityEngine.Object.ReferenceEquals(graph, controller.graph))
                 {
                     graph.UpdateSubAssets();
+<<<<<<< HEAD
+                    graph.GetResource().WriteAsset();
+=======
                     try
                     {
                         VFXGraph.compilingInEditMode = !m_IsRuntimeMode;
@@ -1666,6 +1714,7 @@ namespace UnityEditor.VFX.UI
                     {
                         VFXGraph.compilingInEditMode = false;
                     }
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 }
             }
         }
@@ -1688,6 +1737,17 @@ namespace UnityEditor.VFX.UI
                 else if (child is VFXSubgraphContext subCtx)
                 {
                     if (subCtx.subgraph != null)
+<<<<<<< HEAD
+                    {
+                        var graph = subCtx.subgraph.GetResource().GetOrCreateGraph();
+                        GetGraphsRecursively(graph, graphs);
+                    }
+                }
+                else if( child is VFXContext ctx)
+                {
+                    foreach( var block in ctx.children.Cast<VFXBlock>())
+=======
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                     {
                         var graph = subCtx.subgraph.GetResource().GetOrCreateGraph();
                         GetGraphsRecursively(graph, graphs);
@@ -1699,7 +1759,11 @@ namespace UnityEditor.VFX.UI
                     {
                         if (block is VFXSubgraphBlock subBlock)
                         {
+<<<<<<< HEAD
+                            if( subBlock.subgraph!= null)
+=======
                             if (subBlock.subgraph != null)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                             {
                                 var graph = subBlock.subgraph.GetResource().GetOrCreateGraph();
                                 GetGraphsRecursively(graph, graphs);
@@ -1722,6 +1786,7 @@ namespace UnityEditor.VFX.UI
             if (controller == null || parameterController == null) return;
 
             controller.AddVFXParameter(pos, parameterController, groupNode != null ? groupNode.controller : null);
+
         }
 
         public EventPropagation Resync()
@@ -2190,11 +2255,19 @@ namespace UnityEditor.VFX.UI
             return EventPropagation.Stop;
         }
 
+<<<<<<< HEAD
+        public void AddToSelection(VFXModel model,int id)
+        {
+            VFXNodeController nodeController = controller.GetRootNodeController(model, id);
+
+            if( nodeController != null)
+=======
         public void AddToSelection(VFXModel model, int id)
         {
             VFXNodeController nodeController = controller.GetRootNodeController(model, id);
 
             if (nodeController != null)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             {
                 AddToSelection(rootNodes[nodeController]);
             }
@@ -2727,7 +2800,11 @@ namespace UnityEditor.VFX.UI
                     float cpt = 0;
                     foreach (var row in rows)
                     {
+<<<<<<< HEAD
+                        AddVFXParameter(mousePosition - new Vector2(50, 20) + cpt * new Vector2(0,40), row.controller, groupNode);
+=======
                         AddVFXParameter(mousePosition - new Vector2(50, 20) + cpt * new Vector2(0, 40), row.controller, groupNode);
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                         ++cpt;
                     }
                     e.StopPropagation();

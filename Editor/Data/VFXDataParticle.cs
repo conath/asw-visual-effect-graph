@@ -218,6 +218,8 @@ namespace UnityEditor.VFX
         protected uint stripCapacity = 1;
         [VFXSetting, Delayed, SerializeField]
         protected uint particlePerStripCount = 128;
+<<<<<<< HEAD
+=======
         [VFXSetting(VFXSettingAttribute.VisibleFlags.None), SerializeField]
         protected bool needsComputeBounds = false;
 
@@ -228,6 +230,7 @@ namespace UnityEditor.VFX
          Tooltip("Specifies how the bounds are set. They can be set manually, recorded in the Target GameObject window, or computed automatically at a small performance cost."),
          SerializeField]
         public BoundsSettingMode boundsMode = BoundsSettingMode.Recorded;
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
         public bool hasStrip { get { return dataType == DataType.ParticleStrip; } }
 

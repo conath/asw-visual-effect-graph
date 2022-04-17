@@ -60,6 +60,7 @@ namespace UnityEditor.VFX.Block
                     yield return new VFXNamedExpression(volumeXZ, "volumeXZ");
                     yield return new VFXNamedExpression(volumeYZ, "volumeYZ");
                     yield return new VFXNamedExpression(cumulativeVolumes, "cumulativeVolumes");
+
                 }
             }
         }
@@ -178,12 +179,20 @@ float3 outPos = cube * 0.5f;
 
         public override void Sanitize(int version)
         {
+<<<<<<< HEAD
+            if(version < 5)
+=======
             if (version < 5)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             {
                 // SANITIZE : if older version, ensure position composition is overwrite.
                 compositionPosition = AttributeCompositionMode.Overwrite;
             }
             base.Sanitize(version);
         }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
     }
 }

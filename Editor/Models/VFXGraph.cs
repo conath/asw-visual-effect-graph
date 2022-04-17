@@ -23,6 +23,19 @@ namespace UnityEditor.VFX
     {
         static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
+<<<<<<< HEAD
+            bool isVFX = VisualEffectAssetModicationProcessor.HasVFXExtension(assetPath);
+            if (isVFX)
+            {
+                VisualEffectResource resource = VisualEffectResource.GetResourceAtPath(assetPath);
+                if (resource == null)
+                    return;
+                VFXGraph graph = resource.graph as VFXGraph;
+                if (graph != null)
+                    graph.SanitizeForImport();
+                else
+                    Debug.LogError("VisualEffectGraphResource without graph");
+=======
             List<string> assetToReimport = null;
 
             foreach (var assetPath in importedAssets)
@@ -74,6 +87,7 @@ namespace UnityEditor.VFX
                         Debug.LogErrorFormat("Exception during reimport of {0} : {1}", assetPath, exception);
                     }
                 }
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             }
         }
 
@@ -97,6 +111,11 @@ namespace UnityEditor.VFX
             {
                 VFXGraph graph = resource.graph as VFXGraph;
                 if (graph != null)
+<<<<<<< HEAD
+                    resource.GetOrCreateGraph().CompileForImport();
+                else
+                    Debug.LogError("VisualEffectGraphResource without graph");
+=======
                 {
                     if (!graph.sanitized)
                     {
@@ -158,6 +177,7 @@ namespace UnityEditor.VFX
                 {
                     ((IVFXSubRenderer)model).SetupMaterial(material);
                 }
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             }
         }
 
@@ -199,7 +219,11 @@ namespace UnityEditor.VFX
     }
     class VFXAssetManager : EditorWindow
     {
+<<<<<<< HEAD
+        private static List<VisualEffectObject> GetAllVisualEffectObjects()
+=======
         public static List<VisualEffectObject> GetAllVisualEffectObjects()
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         {
             var vfxObjects = new List<VisualEffectObject>();
             var vfxObjectsGuid = AssetDatabase.FindAssets("t:VisualEffectObject");
@@ -215,7 +239,12 @@ namespace UnityEditor.VFX
             return vfxObjects;
         }
 
+<<<<<<< HEAD
+        [MenuItem("Edit/Visual Effects/Rebuild And Save All Visual Effect Graphs", priority = 320)]
+        public static void Build()
+=======
         public static void Build(bool forceDirty = false)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         {
             var vfxObjects = GetAllVisualEffectObjects();
 
@@ -229,8 +258,12 @@ namespace UnityEditor.VFX
                 {
                     VFXGraph graph = resource.GetOrCreateGraph();
                     AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(graph));
+<<<<<<< HEAD
+                    EditorUtility.SetDirty(resource);
+=======
                     if (forceDirty)
                         EditorUtility.SetDirty(resource);
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 }
             }
 
@@ -265,6 +298,9 @@ namespace UnityEditor.VFX
                 if (vfxResource != null)
                 {
                     vfxResource.GetOrCreateGraph().UpdateSubAssets();
+<<<<<<< HEAD
+                    vfxResource.WriteAsset(); // write asset as the AssetDatabase won't do it.
+=======
                     try
                     {
                         VFXGraph.compilingInEditMode = vfxResource.GetOrCreateGraph().GetCompilationMode() == VFXCompilationMode.Edition;
@@ -274,6 +310,7 @@ namespace UnityEditor.VFX
                     {
                         VFXGraph.compilingInEditMode = false;
                     }
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 }
             }
             Profiler.EndSample();
@@ -356,9 +393,13 @@ namespace UnityEditor.VFX
         // 4: TransformVector|Position|Direction & DistanceToSphere|Plane|Line have now spaceable outputs
         // 5: Harmonized position blocks composition: PositionAABox was the only one with Overwrite position
         // 6: Remove automatic strip orientation from quad strip context
+<<<<<<< HEAD
+        public static readonly int CurrentVersion = 6;
+=======
         // 7: Add CameraBuffer type
         // 8: Bounds computation introduces a BoundsSettingMode for VFXDataParticles
         public static readonly int CurrentVersion = 8;
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
         public readonly VFXErrorManager errorManager = new VFXErrorManager();
 
@@ -546,6 +587,17 @@ namespace UnityEditor.VFX
             m_GraphSanitized = true;
             m_GraphVersion = CurrentVersion;
 
+<<<<<<< HEAD
+#if !CASE_1289829_HAS_BEEN_FIXED
+            if (visualEffectResource != null && (visualEffectResource.updateMode & VFXUpdateMode.ExactFixedTimeStep) == VFXUpdateMode.ExactFixedTimeStep)
+            {
+                visualEffectResource.updateMode = visualEffectResource.updateMode & ~VFXUpdateMode.ExactFixedTimeStep;
+                Debug.Log("Sanitize : Exact Fixed Time has been automatically reset to false to avoid an unexpected behavior.");
+            }
+#endif
+
+            UpdateSubAssets(); //Should not be necessary : force remove no more referenced object from asset
+=======
             UpdateSubAssets(); //Force remove no more referenced object from the asset & *important* register as persistent new dependencies
         }
 
@@ -592,6 +644,7 @@ namespace UnityEditor.VFX
                     }
                 }
             }
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
 
         public void ClearCompileData()
@@ -831,7 +884,11 @@ namespace UnityEditor.VFX
             }
         }
 
+<<<<<<< HEAD
+        private void SetFlattenedParentToSubblocks( )
+=======
         private void SetFlattenedParentToSubblocks()
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         {
             foreach (var child in children.OfType<VFXContext>())
                 foreach (var block in child.children.OfType<VFXSubgraphBlock>())

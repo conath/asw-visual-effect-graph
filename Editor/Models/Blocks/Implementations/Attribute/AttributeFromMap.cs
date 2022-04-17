@@ -185,18 +185,30 @@ namespace UnityEditor.VFX.Block
                 }
                 else
                 {
+<<<<<<< HEAD
+                    var particleIdExpr =  new VFXAttributeExpression(VFXAttribute.ParticleId);
+                    var attribMapExpr = GetExpressionsFromSlots(this).First(o => o.name == "attributeMap").exp;
+                    var height = new VFXExpressionTextureHeight(attribMapExpr);
+                    var width =  new VFXExpressionTextureWidth(attribMapExpr);
+                    var countExpr =   height*width;
+=======
                     var particleIdExpr = new VFXAttributeExpression(VFXAttribute.ParticleId);
                     var attribMapExpr = GetExpressionsFromSlots(this).First(o => o.name == "attributeMap").exp;
                     var height = new VFXExpressionTextureHeight(attribMapExpr);
                     var width = new VFXExpressionTextureWidth(attribMapExpr);
                     var countExpr = height * width;
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                     VFXExpression samplePos = VFXValue.Constant(0);
 
                     switch (SampleMode)
                     {
                         case AttributeMapSampleMode.IndexRelative:
                             var relativePosExpr = GetExpressionsFromSlots(this).First(o => o.name == "relativePos").exp;
+<<<<<<< HEAD
+                            samplePos = VFXOperatorUtility.Clamp( new VFXExpressionCastFloatToUint(relativePosExpr) * countExpr,
+=======
                             samplePos = VFXOperatorUtility.Clamp(new VFXExpressionCastFloatToUint(relativePosExpr) * countExpr,
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                                 VFXOperatorUtility.ZeroExpression[VFXValueType.Uint32],
                                 countExpr - VFXOperatorUtility.OneExpression[VFXValueType.Uint32], false);
                             break;
@@ -212,18 +224,31 @@ namespace UnityEditor.VFX.Block
                             samplePos = new VFXExpressionCastFloatToUint(randExpr * new VFXExpressionCastUintToFloat(countExpr));
                             break;
                         case AttributeMapSampleMode.RandomConstantPerParticle:
+<<<<<<< HEAD
+                            var seedExpr =  GetExpressionsFromSlots(this).First(o => o.name == "Seed").exp;
+                            var randFixedExpr = VFXOperatorUtility.BuildRandom(VFXSeedMode.PerParticle, true, new RandId(this), seedExpr);
+                            samplePos =  new VFXExpressionCastFloatToUint(randFixedExpr * new VFXExpressionCastUintToFloat(countExpr));
+=======
                             var seedExpr = GetExpressionsFromSlots(this).First(o => o.name == "Seed").exp;
                             var randFixedExpr = VFXOperatorUtility.BuildRandom(VFXSeedMode.PerParticle, true, new RandId(this), seedExpr);
                             samplePos = new VFXExpressionCastFloatToUint(randFixedExpr * new VFXExpressionCastUintToFloat(countExpr));
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                             break;
                     }
                     var y = samplePos / width;
                     var x = samplePos - (y * width);
                     var outputType = VFXExpression.TypeToType(currentAttribute.type);
                     var type = typeof(VFXExpressionSampleAttributeMap<>).MakeGenericType(outputType);
+<<<<<<< HEAD
+                    var outputExpr = Activator.CreateInstance(type, new object[]{attribMapExpr, x, y });
+
+                    yield return new VFXNamedExpression((VFXExpression)outputExpr, "value") ;
+
+=======
                     var outputExpr = Activator.CreateInstance(type, new object[] { attribMapExpr, x, y });
 
                     yield return new VFXNamedExpression((VFXExpression)outputExpr, "value");
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 }
             }
         }

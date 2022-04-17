@@ -270,7 +270,11 @@ namespace UnityEditor.VFX
 
         static public VFXExpression SafeNormalize(VFXExpression v)
         {
+<<<<<<< HEAD
+            var sqrDist = Dot(v,v);
+=======
             var sqrDist = Dot(v, v);
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             var condition = new VFXExpressionCondition(VFXValueType.Float, VFXCondition.Less, sqrDist, VFXOperatorUtility.EpsilonSqrExpression[VFXValueType.Float]);
             return new VFXExpressionBranch(condition, VFXOperatorUtility.ZeroExpression[v.valueType], Normalize(v));
         }
@@ -749,6 +753,8 @@ namespace UnityEditor.VFX
             var z = new VFXExpressionExtractComponent(vector3, 2);
             return Min3(x, y, z);
         }
+<<<<<<< HEAD
+=======
 
         static public VFXExpression UniformScaleMatrix(VFXExpression scale)
         {
@@ -756,5 +762,6 @@ namespace UnityEditor.VFX
             var zero = ZeroExpression[VFXValueType.Float3];
             return new VFXExpressionTRSToMatrix(zero, zero, scale3);
         }
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
     }
 }

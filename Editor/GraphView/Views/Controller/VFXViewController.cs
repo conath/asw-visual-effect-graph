@@ -208,7 +208,11 @@ namespace UnityEditor.VFX.UI
                             {
                                 action();
                             }
+<<<<<<< HEAD
+                            catch(Exception e)
+=======
                             catch (Exception e)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                             {
                                 Debug.LogException(e);
                             }

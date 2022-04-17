@@ -12,7 +12,11 @@ namespace UnityEditor.VFX
         {
         }
 
+<<<<<<< HEAD
+        public VFXExpressionSampleAttributeMap(VFXExpression texture, VFXExpression x, VFXExpression y )
+=======
         public VFXExpressionSampleAttributeMap(VFXExpression texture, VFXExpression x, VFXExpression y)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             : base(Flags.InvalidOnCPU, new VFXExpression[3] { texture, x, y })
         { }
 

@@ -131,11 +131,17 @@ float4 SampleTexture(VFXSamplerCube s, float3 coords)
 }
 
 #if SHADER_AVAILABLE_CUBEARRAY
+<<<<<<< HEAD
+float4 SampleTexture(VFXSamplerCubeArray s, float3 coords, float slice, float level = 0.0f)
+=======
 float4 SampleTexture(VFXSamplerCubeArray s, float3 coords, float slice)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 {
     return SAMPLE_TEXTURECUBE_ARRAY(s.t, s.s, coords, slice);
 }
 #endif
+<<<<<<< HEAD
+=======
 
 float4 SampleTexture(VFXSampler2D s, float2 coords, float level)
 {
@@ -163,6 +169,7 @@ float4 SampleTexture(VFXSamplerCubeArray s, float3 coords, float slice, float le
     return SAMPLE_TEXTURECUBE_ARRAY_LOD(s.t, s.s, coords, slice, level);
 }
 #endif
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
 float4 LoadTexture(VFXSampler2D s, int3 pixelCoords)
 {

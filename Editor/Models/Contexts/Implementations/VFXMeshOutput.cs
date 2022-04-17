@@ -95,7 +95,11 @@ namespace UnityEditor.VFX
                     yield return property;
 
                 if (GetOrRefreshShaderGraphObject() == null)
+<<<<<<< HEAD
+                    foreach (var property in PropertiesFromType("OptionalInputProperties"))
+=======
                     foreach (var property in optionalInputProperties)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                         yield return property;
             }
         }

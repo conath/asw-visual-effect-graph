@@ -8,7 +8,11 @@ namespace UnityEditor.VFX.Block
     [VFXInfo(category = "Position", variantProvider = typeof(PositionBaseProvider))]
     class PositionSphere : PositionBase
     {
+<<<<<<< HEAD
+        public override string name { get { return string.Format(base.name, "Sphere"); } }
+=======
         public override string name { get { return string.Format(base.name, "Arc Sphere"); } }
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
         public class InputProperties
         {
@@ -23,6 +27,8 @@ namespace UnityEditor.VFX.Block
         }
 
         protected override bool needDirectionWrite => true;
+<<<<<<< HEAD
+=======
 
         public override IEnumerable<VFXNamedExpression> parameters
         {
@@ -45,6 +51,7 @@ namespace UnityEditor.VFX.Block
                 yield return new VFXNamedExpression(CalculateVolumeFactor(positionMode, radius, thickness), "volumeFactor");
             }
         }
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
         public override string source
         {
@@ -61,6 +68,10 @@ float rNorm = pow(volumeFactor + (1 - volumeFactor) * RAND, 1.0f / 3.0f);
 float2 sincosTheta;
 sincos(theta, sincosTheta.x, sincosTheta.y);
 sincosTheta *= sqrt(1.0f - cosPhi * cosPhi);
+<<<<<<< HEAD
+float3 sphereNormal = float3(sincosTheta, cosPhi);
+";
+=======
 float3 finalDir = float3(sincosTheta, cosPhi);
 float3 finalPos = float3(sincosTheta, cosPhi) * rNorm;
 finalPos = mul(transform, float4(finalPos, 1.0f)).xyz;
@@ -69,6 +80,10 @@ finalDir = normalize(finalDir);";
 
                 outSource += string.Format(composeDirectionFormatString, "finalDir") + "\n";
                 outSource += string.Format(composePositionFormatString, "finalPos");
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
+
+                outSource += string.Format(composeDirectionFormatString, "sphereNormal");
+                outSource += string.Format(composePositionFormatString, "sphereNormal * (rNorm * ArcSphere_sphere_radius) + ArcSphere_sphere_center");
 
                 return outSource;
             }

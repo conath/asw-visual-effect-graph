@@ -113,7 +113,10 @@ float VFXLinearEyeDepthOrthographic(float depth)
 #endif
 }
 
+<<<<<<< HEAD
+=======
 #if defined(VFX_VARYING_PS_INPUTS)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 float VFXGetSoftParticleFade(VFX_VARYING_PS_INPUTS i)
 {
     float fade = 1.0f;

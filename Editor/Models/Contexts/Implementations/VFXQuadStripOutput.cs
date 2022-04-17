@@ -54,7 +54,11 @@ namespace UnityEditor.VFX
             {
                 IEnumerable<VFXPropertyWithValue> properties = base.inputProperties;
                 if (GetOrRefreshShaderGraphObject() == null)
+<<<<<<< HEAD
+                    properties = properties.Concat(PropertiesFromType("OptionalInputProperties"));
+=======
                     properties = properties.Concat(optionalInputProperties);
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 if (tilingMode == StripTilingMode.Custom)
                     properties = properties.Concat(PropertiesFromType("CustomUVInputProperties"));
                 return properties;
@@ -131,7 +135,11 @@ namespace UnityEditor.VFX
 
                         var axisZNode = CreateInstance<VFXAttributeParameter>();
                         axisZNode.SetSettingValue("attribute", "axisZ");
+<<<<<<< HEAD
+                        axisZNode.position = model.position + new Vector2(-225,150); 
+=======
                         axisZNode.position = model.position + new Vector2(-225, 150);
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                         model.GetGraph().AddChild(axisZNode);
 
                         axisZNode.GetOutputSlot(0).Link(orientBlock.GetInputSlot(0));

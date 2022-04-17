@@ -234,7 +234,11 @@ namespace UnityEditor.VFX
         {
             get
             {
+<<<<<<< HEAD
+                yield return new VFXMapping("sortPriority", sortPriority);
+=======
                 yield return new VFXMapping("sortPriority", vfxSystemSortPriority);
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 yield return new VFXMapping("castShadows", castShadows ? 1 : 0);
             }
         }

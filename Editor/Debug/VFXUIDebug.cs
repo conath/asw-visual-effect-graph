@@ -514,6 +514,17 @@ namespace UnityEditor.VFX.UI
         {
             //Update now...
             UpdateDebugMode();
+<<<<<<< HEAD
+
+            //.. but in some case, the onRuntimeDataChanged is called too soon, need to update twice
+            //because VFXUIDebug relies on VisualEffect : See m_VFX.GetParticleSystemNames
+            m_View.schedule.Execute(() =>
+            {
+                UpdateDebugMode();
+            }).ExecuteLater(0 /* next frame */);
+        }
+=======
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
             //.. but in some case, the onRuntimeDataChanged is called too soon, need to update twice
             //because VFXUIDebug relies on VisualEffect : See m_VFX.GetParticleSystemNames

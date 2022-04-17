@@ -276,6 +276,10 @@ namespace UnityEditor.VFX
             if (from.m_ContextType == VFXContextType.Event && to.contextType == VFXContextType.OutputEvent)
                 return false;
 
+            //Can't connect directly event to context (OutputEvent or Initialize) for now
+            if (from.m_ContextType == VFXContextType.Event && to.contextType != VFXContextType.Spawner && to.contextType != VFXContextType.Subgraph)
+                return false;
+
             return true;
         }
 
@@ -348,6 +352,8 @@ namespace UnityEditor.VFX
             return true;
         }
 
+<<<<<<< HEAD
+=======
         private static bool CanMixingTo(VFXContextType from, VFXContextType to, VFXContextType lastFavoriteFrom)
         {
             if (to == VFXContextType.Init)
@@ -368,6 +374,7 @@ namespace UnityEditor.VFX
             return from == to && to == lastFavoriteFrom;
         }
 
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         protected static void InnerLink(VFXContext from, VFXContext to, int fromIndex, int toIndex, bool notify = true)
         {
             if (!CanLink(from, to, fromIndex, toIndex))

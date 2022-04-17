@@ -20,7 +20,11 @@ namespace UnityEditor.VFX.Operator
 
         public class InputProperties
         {
+<<<<<<< HEAD
+           [Tooltip("Sets the index of the point to sample.")]
+=======
             [Tooltip("Sets the index of the point to sample.")]
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             public uint index = 0u;
         }
 
@@ -39,7 +43,11 @@ namespace UnityEditor.VFX.Operator
                     return typeof(float);
                 case TextureFormat.RGBAHalf:
                     return typeof(Vector3);
+<<<<<<< HEAD
+                
+=======
 
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 default:
                     throw new InvalidOperationException("Unsupported texture format  : " + surface.format);
             }
@@ -62,6 +70,10 @@ namespace UnityEditor.VFX.Operator
 
         protected override sealed VFXExpression[] BuildExpression(VFXExpression[] inputExpression)
         {
+<<<<<<< HEAD
+          
+=======
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             VFXExpression[] expressions = new VFXExpression[asset.surfaces.Length + 1];
             expressions[0] = VFXValue.Constant((uint)asset.PointCount);
 
@@ -76,7 +88,11 @@ namespace UnityEditor.VFX.Operator
 
                 Type outputType = GetOutputType(asset.surfaces[i]);
                 var type = typeof(VFXExpressionSampleAttributeMap<>).MakeGenericType(outputType);
+<<<<<<< HEAD
+                var outputExpr = Activator.CreateInstance(type, new object[]{surfaceExpr, x, y });
+=======
                 var outputExpr = Activator.CreateInstance(type, new object[] { surfaceExpr, x, y });
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
                 expressions[i + 1] = (VFXExpression)outputExpr;
             }

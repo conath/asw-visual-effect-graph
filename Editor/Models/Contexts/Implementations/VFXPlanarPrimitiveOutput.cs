@@ -95,7 +95,11 @@ namespace UnityEditor.VFX
             {
                 IEnumerable<VFXPropertyWithValue> properties = base.inputProperties;
                 if (GetOrRefreshShaderGraphObject() == null)
+<<<<<<< HEAD
+                    properties = properties.Concat(PropertiesFromType("OptionalInputProperties"));
+=======
                     properties = properties.Concat(optionalInputProperties);
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
                 if (primitiveType == VFXPrimitiveType.Octagon)
                     properties = properties.Concat(PropertiesFromType(typeof(VFXPlanarPrimitiveHelper.OctagonInputProperties)));

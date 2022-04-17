@@ -57,6 +57,17 @@ namespace UnityEditor.VFX.Block
             public float blendColor;
         }
 
+        public class InputPropertiesBlendPosition
+        {
+            [Range(0.0f, 1.0f), Tooltip("Sets the blending value for position attribute.")]
+            public float blendPosition;
+        }
+        public class InputPropertiesBlendColor
+        {
+            [Range(0.0f, 1.0f), Tooltip("Sets the blending value for color attribute.")]
+            public float blendColor;
+        }
+
         [VFXSetting, Tooltip("Specifies which Camera to use to project particles onto its depth. Can use the camera tagged 'Main', or a custom camera.")]
         public CameraMode camera;
 
@@ -89,11 +100,19 @@ namespace UnityEditor.VFX.Block
         {
             get
             {
+<<<<<<< HEAD
+                yield return new VFXAttributeInfo(VFXAttribute.Position, compositionPosition == AttributeCompositionMode.Overwrite? VFXAttributeMode.Write : VFXAttributeMode.ReadWrite);
+
+                if (inheritSceneColor)
+                    yield return new VFXAttributeInfo(VFXAttribute.Color, compositionColor == AttributeCompositionMode.Overwrite? VFXAttributeMode.Write : VFXAttributeMode.ReadWrite);
+				
+=======
                 yield return new VFXAttributeInfo(VFXAttribute.Position, compositionPosition == AttributeCompositionMode.Overwrite ? VFXAttributeMode.Write : VFXAttributeMode.ReadWrite);
 
                 if (inheritSceneColor)
                     yield return new VFXAttributeInfo(VFXAttribute.Color, compositionColor == AttributeCompositionMode.Overwrite ? VFXAttributeMode.Write : VFXAttributeMode.ReadWrite);
 
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 if (mode == PositionMode.Sequential)
                     yield return new VFXAttributeInfo(VFXAttribute.ParticleId, VFXAttributeMode.Read);
                 else if (mode == PositionMode.Random)
@@ -122,7 +141,11 @@ namespace UnityEditor.VFX.Block
                 if (compositionPosition == AttributeCompositionMode.Blend)
                     inputs = inputs.Concat(PropertiesFromType(nameof(InputPropertiesBlendPosition)));
 
+<<<<<<< HEAD
+                if(inheritSceneColor && compositionColor == AttributeCompositionMode.Blend)
+=======
                 if (inheritSceneColor && compositionColor == AttributeCompositionMode.Blend)
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                     inputs = inputs.Concat(PropertiesFromType(nameof(InputPropertiesBlendColor)));
 
                 return inputs;
@@ -224,7 +247,11 @@ float4 vfxPos = mul(ClipToVFX,clipPos);
                 if (inheritSceneColor)
                 {
                     source += "\n";
+<<<<<<< HEAD
+                    source += VFXBlockUtility.GetComposeString(compositionColor, "color", " LoadTexture(Camera_colorBuffer,int4(uvs*Camera_pixelDimensions, 0, 0)).rgb", "blendColor");
+=======
                     source += VFXBlockUtility.GetComposeString(compositionColor, "color", " LOAD_TEXTURE2D_X(Camera_colorBuffer.t, uvs*Camera_pixelDimensions).rgb", "blendColor");
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 }
 
                 return source;

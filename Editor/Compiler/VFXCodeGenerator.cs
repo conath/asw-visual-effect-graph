@@ -226,7 +226,11 @@ namespace UnityEditor.VFX
         {
             return Path.GetFullPath(path)
                 .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+<<<<<<< HEAD
+                #if !UNITY_EDITOR_LINUX
+=======
 #if !UNITY_EDITOR_LINUX
+>>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 .ToLowerInvariant()
 #endif
                 ;
