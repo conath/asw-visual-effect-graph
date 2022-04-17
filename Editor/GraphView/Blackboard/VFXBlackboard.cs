@@ -132,8 +132,6 @@ namespace UnityEditor.VFX.UI
             m_AddButton.SetEnabled(false);
 
             this.AddManipulator(new ContextualMenuManipulator(BuildContextualMenu));
-<<<<<<< HEAD
-=======
 
             // Workaround: output category is in a scrollview which can lead to get the Add button invisible (moved out of the visible viewport of the scrollviewer)
             var scrollView = this.Q<ScrollView>();
@@ -142,7 +140,6 @@ namespace UnityEditor.VFX.UI
                 scrollView.RegisterCallback<GeometryChangedEvent, ScrollView>(OnGeometryChanged, scrollView);
                 scrollView.horizontalScroller.valueChanged += x => OnOutputCategoryScrollChanged(scrollView);
             }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
 
         public void LockUI()
@@ -157,8 +154,6 @@ namespace UnityEditor.VFX.UI
             m_AddButton.SetEnabled(m_Controller != null);
         }
 
-<<<<<<< HEAD
-=======
         public VFXBlackboardCategory AddCategory(string initialName)
         {
             var newCategoryName = VFXParameterController.MakeNameUnique(initialName, new HashSet<string>(m_Categories.Keys));
@@ -171,7 +166,6 @@ namespace UnityEditor.VFX.UI
             return newCategory;
         }
 
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         DropdownMenuAction.Status GetContextualMenuStatus()
         {
             //Use m_AddButton state which relies on locked & controller status
@@ -180,8 +174,6 @@ namespace UnityEditor.VFX.UI
             return DropdownMenuAction.Status.Disabled;
         }
 
-<<<<<<< HEAD
-=======
         void OnOutputCategoryScrollChanged(ScrollView scrollView)
         {
             OnGeometryChanged(null, scrollView);
@@ -199,17 +191,12 @@ namespace UnityEditor.VFX.UI
             }
         }
 
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
             evt.menu.AppendAction("Select All", (a) => SelectAll(), (a) => GetContextualMenuStatus());
             evt.menu.AppendAction("Select Unused", (a) => SelectUnused(), (a) => GetContextualMenuStatus());
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         void SelectAll()
         {
             m_View.ClearSelection();
@@ -221,11 +208,7 @@ namespace UnityEditor.VFX.UI
             m_View.ClearSelection();
 
             var unused = unusedParameters.ToList();
-<<<<<<< HEAD
-            this.Query<BlackboardField>().Where(t=> unused.Contains(t.GetFirstAncestorOfType<VFXBlackboardRow>().controller.model) ).ForEach(t => m_View.AddToSelection(t));
-=======
             this.Query<BlackboardField>().Where(t => unused.Contains(t.GetFirstAncestorOfType<VFXBlackboardRow>().controller.model)).ForEach(t => m_View.AddToSelection(t));
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
 
         IEnumerable<VFXParameter> unusedParameters
@@ -493,9 +476,6 @@ namespace UnityEditor.VFX.UI
 
         private static IEnumerable<VFXModelDescriptor> GetSortedParameters()
         {
-<<<<<<< HEAD
-            return VFXLibrary.GetParameters().OrderBy(o => o.name);
-=======
             foreach (var desc in VFXLibrary.GetParameters().OrderBy(o => o.name))
             {
                 var type = desc.model.type;
@@ -505,7 +485,6 @@ namespace UnityEditor.VFX.UI
 
                 yield return desc;
             }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
 
         void OnAddItem(Blackboard bb)

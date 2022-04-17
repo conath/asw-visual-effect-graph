@@ -14,11 +14,7 @@ namespace UnityEditor.VFX
         {
             return string.Format("GetStripTangent(attributes.position, relativeIndexInStrip, stripData)");
         }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         public override IEnumerable<VFXAttributeInfo> GetNeededAttributes()
         {
             yield return new VFXAttributeInfo(VFXAttribute.Position, VFXAttributeMode.Read);

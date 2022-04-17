@@ -8,11 +8,7 @@ namespace UnityEditor.VFX.Block
     [VFXInfo(category = "Position", variantProvider = typeof(PositionBaseProvider))]
     class PositionCircle : PositionBase
     {
-<<<<<<< HEAD
-        public override string name { get { return string.Format(base.name, "Circle"); } }
-=======
         public override string name { get { return string.Format(base.name, "Arc Circle"); } }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         protected override float thicknessDimensions { get { return 2.0f; } }
 
         public class InputProperties
@@ -24,15 +20,8 @@ namespace UnityEditor.VFX.Block
         public class CustomProperties
         {
             [Range(0, 1), Tooltip("Sets the position on the arc to emit particles from when ‘Custom Emission’ is used.")]
-<<<<<<< HEAD
-            public float ArcSequencer = 0.0f;
-        }
-
-        protected override bool needDirectionWrite => true;
-=======
             public float arcSequencer = 0.0f;
         }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
         protected override bool needDirectionWrite => true;
 
@@ -62,16 +51,6 @@ namespace UnityEditor.VFX.Block
                 yield return new VFXNamedExpression(rNorm, "rNorm");
                 yield return new VFXNamedExpression(sinTheta, "sinTheta");
                 yield return new VFXNamedExpression(cosTheta, "cosTheta");
-<<<<<<< HEAD
-                yield return base.parameters.FirstOrDefault(o => o.name == "ArcCircle_circle_center");
-
-                if (compositionPosition == AttributeCompositionMode.Blend)
-                    yield return base.parameters.FirstOrDefault(o => o.name == "blendPosition");
-                if (compositionDirection == AttributeCompositionMode.Blend)
-                    yield return base.parameters.FirstOrDefault(o => o.name == "blendDirection");
-
-
-=======
 
                 if (compositionPosition == AttributeCompositionMode.Blend)
                     yield return allSlot.FirstOrDefault(o => o.name == "blendPosition");
@@ -87,7 +66,6 @@ namespace UnityEditor.VFX.Block
                 var invFinalTransform = new VFXExpressionTransposeMatrix(new VFXExpressionInverseTRSMatrix(finalTransform));
                 yield return new VFXNamedExpression(finalTransform, "transform");
                 yield return new VFXNamedExpression(invFinalTransform, "inverseTranspose");
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             }
         }
 
@@ -95,11 +73,6 @@ namespace UnityEditor.VFX.Block
         {
             get
             {
-<<<<<<< HEAD
-                string outSource = string.Format(composeDirectionFormatString, "float3(sinTheta, cosTheta, 0.0f)");
-                outSource += VFXBlockUtility.GetComposeString(compositionPosition, "position.xy", "float2(sinTheta, cosTheta) * rNorm + ArcCircle_circle_center.xy", "blendPosition") + "\n";
-                outSource += VFXBlockUtility.GetComposeString(compositionPosition, "position.z", " ArcCircle_circle_center.z", "blendPosition");
-=======
                 var outSource = @"
 float3 finalDir = float3(sinTheta, cosTheta, 0.0f);
 float3 finalPos = float3(sinTheta, cosTheta, 0.0f) * rNorm;
@@ -109,7 +82,6 @@ finalDir = normalize(finalDir);
 ";
                 outSource += string.Format(composeDirectionFormatString, "finalDir") + "\n";
                 outSource += string.Format(composePositionFormatString, "finalPos") + "\n";
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 return outSource;
             }
         }

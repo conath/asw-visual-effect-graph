@@ -30,9 +30,6 @@ namespace UnityEditor.VFX
         [VFXSetting(VFXSettingAttribute.VisibleFlags.InInspector), SerializeField, Tooltip("When enabled, particles will not be affected by temporal anti-aliasing.")]
         protected bool excludeFromTAA = false;
 
-<<<<<<< HEAD
-        public bool isBlendModeOpaque { get { return blendMode == BlendMode.Opaque; } }
-=======
         public virtual bool isBlendModeOpaque { get { return blendMode == BlendMode.Opaque; } }
 
         [VFXSetting(VFXSettingAttribute.VisibleFlags.InInspector), Range(-50, 50), FormerlySerializedAs("materialOffset"), Delayed, SerializeField, Tooltip("Specifies an offset applied to the material render queue.")]
@@ -42,7 +39,6 @@ namespace UnityEditor.VFX
         {
             return sortingPriority;
         }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
         public virtual bool hasMotionVector
         {
@@ -59,11 +55,6 @@ namespace UnityEditor.VFX
         public virtual bool implementsMotionVector { get { return false; } }
 
         public virtual bool hasExcludeFromTAA => subOutput.supportsExcludeFromTAA && excludeFromTAA;
-<<<<<<< HEAD
-
-        protected VFXAbstractRenderedOutput(VFXDataType dataType) : base(VFXContextType.Output, dataType, VFXDataType.None) {}
-=======
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
         protected VFXAbstractRenderedOutput(VFXDataType dataType) : base(VFXContextType.Output, dataType, VFXDataType.None) { }
 

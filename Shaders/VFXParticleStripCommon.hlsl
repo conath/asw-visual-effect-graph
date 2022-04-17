@@ -57,11 +57,7 @@ void InitStripAttributes(uint particleIndex, inout VFXAttributes attributes, con
 #endif
 }
 
-<<<<<<< HEAD
-void InitStripAttributesWithSpawn(uint spawnCount, uint particleIndex, inout Attributes attributes, const StripData data)
-=======
 void InitStripAttributesWithSpawn(uint spawnCount, uint particleIndex, inout VFXAttributes attributes, const StripData data)
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 {
     InitStripAttributes(particleIndex, attributes, data);
 #if VFX_USE_PARTICLECOUNTINSTRIP_CURRENT

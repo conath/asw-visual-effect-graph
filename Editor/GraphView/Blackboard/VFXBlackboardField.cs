@@ -34,23 +34,17 @@ namespace UnityEditor.VFX.UI
         void PillBuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
             evt.menu.AppendAction("Rename", (a) => OpenTextEditor(), DropdownMenuAction.AlwaysEnabled);
-<<<<<<< HEAD
-=======
             evt.menu.AppendAction("Duplicate %d", (a) => Duplicate(), DropdownMenuAction.AlwaysEnabled);
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             evt.menu.AppendAction("Delete", (a) => Delete(), DropdownMenuAction.AlwaysEnabled);
 
             evt.StopPropagation();
         }
 
-<<<<<<< HEAD
-=======
         public void Duplicate()
         {
             GetFirstAncestorOfType<VFXView>().DuplicateBlackboardFieldSelection();
         }
 
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         void Delete()
         {
             if (selected)
@@ -72,15 +66,6 @@ namespace UnityEditor.VFX.UI
         public void SelfChange()
         {
             if (controller.isOutput)
-<<<<<<< HEAD
-                icon = AssetDatabase.LoadAssetAtPath<Texture2D>(VisualEffectGraphPackageInfo.assetPackagePath + "/Editor Default Resources/VFX/output dot.png");
-            else if (controller.exposed)
-                icon = AssetDatabase.LoadAssetAtPath<Texture2D>(VisualEffectGraphPackageInfo.assetPackagePath + "/Editor Default Resources/VFX/exposed dot.png");
-            else
-                icon = null;
-
-            if( (!controller.isOutput && !controller.model.outputSlots.Any(t=>t.HasLink(true))) || (controller.isOutput && !controller.model.inputSlots.Any(t => t.HasLink(true))))
-=======
                 icon = AssetDatabase.LoadAssetAtPath<Texture2D>(VisualEffectAssetEditorUtility.editorResourcesPath + "/VFX/output-dot.png");
             else if (controller.exposed)
                 icon = AssetDatabase.LoadAssetAtPath<Texture2D>(VisualEffectAssetEditorUtility.editorResourcesPath + "/VFX/exposed-dot.png");
@@ -88,7 +73,6 @@ namespace UnityEditor.VFX.UI
                 icon = null;
 
             if ((!controller.isOutput && !controller.model.outputSlots.Any(t => t.HasLink(true))) || (controller.isOutput && !controller.model.inputSlots.Any(t => t.HasLink(true))))
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 AddToClassList("unused");
             else
                 RemoveFromClassList("unused");

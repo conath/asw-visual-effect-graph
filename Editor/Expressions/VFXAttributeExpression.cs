@@ -92,17 +92,6 @@ namespace UnityEditor.VFX
         [Tooltip("Outputs the index of the current strip. Each strip gets assigned an incremental value when it is created. This attribute is available in systems using the 'Particle Strip' data type.")]
         public static readonly VFXAttribute StripIndex = new VFXAttribute("stripIndex", VFXValueType.Uint32);
         [Tooltip("Outputs the total particle count within the current strip. This attribute is available in systems using the 'Particle Strip' data type.")]
-<<<<<<< HEAD
-        public static readonly VFXAttribute ParticleCountInStrip    = new VFXAttribute("particleCountInStrip", VFXValueType.Uint32);
-        [Tooltip("Outputs the spawn index of the particle within its strip. This attribute is available in systems using the 'Particle Strip' data type.")]
-        public static readonly VFXAttribute SpawnIndexInStrip       = new VFXAttribute("spawnIndexInStrip", VFXValueType.Uint32);
-
-        // Internal as we dont want it to appear in the graph
-        internal static readonly VFXAttribute StripAlive            = new VFXAttribute("stripAlive", VFXValue.Constant(true)); // Internal attribute used to keep track of the state of the attached strip (TODO: Use a number to handle more tha 1 strip)
-
-        public static readonly VFXAttribute[] AllAttribute = VFXReflectionHelper.CollectStaticReadOnlyExpression<VFXAttribute>(typeof(VFXAttribute));
-        public static readonly VFXAttribute[] AllAttributeReadOnly = new VFXAttribute[] { Seed, ParticleId, SpawnTime, ParticleIndexInStrip, SpawnIndex, StripIndex, ParticleCountInStrip, SpawnIndexInStrip };
-=======
         public static readonly VFXAttribute ParticleCountInStrip = new VFXAttribute("particleCountInStrip", VFXValueType.Uint32);
         [Tooltip("Outputs the spawn index of the particle within its strip. This attribute is available in systems using the 'Particle Strip' data type.")]
         public static readonly VFXAttribute SpawnIndexInStrip = new VFXAttribute("spawnIndexInStrip", VFXValueType.Uint32);
@@ -114,7 +103,6 @@ namespace UnityEditor.VFX
 
         public static readonly VFXAttribute[] AllAttribute = VFXReflectionHelper.CollectStaticReadOnlyExpression<VFXAttribute>(typeof(VFXAttribute));
         public static readonly VFXAttribute[] AllAttributeReadOnly = new VFXAttribute[] { Seed, ParticleId, ParticleIndexInStrip, SpawnTime, SpawnIndex, SpawnCount, StripIndex, ParticleCountInStrip, SpawnIndexInStrip };
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         public static readonly VFXAttribute[] AllAttributeWriteOnly = new VFXAttribute[] { EventCount };
         public static readonly VFXAttribute[] AllAttributeLocalOnly = new VFXAttribute[] { EventCount, ParticleIndexInStrip, StripIndex, ParticleCountInStrip };
 

@@ -12,11 +12,7 @@ namespace UnityEditor.VFX.Operator
             {
                 return new Dictionary<string, object[]>
                 {
-<<<<<<< HEAD
-                    { "safeNormalize", new object[]{true, false} }
-=======
                     { "safeNormalize", new object[] {true, false} }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 };
             }
         }
@@ -35,19 +31,11 @@ namespace UnityEditor.VFX.Operator
         bool safeNormalize = false;
 
 
-<<<<<<< HEAD
-        protected override sealed string operatorName { get {return  safeNormalize ?  "Safe Normalize" :  "Normalize"; } }
-
-        protected override sealed VFXExpression[] BuildExpression(VFXExpression[] inputExpression)
-        {
-            if(safeNormalize)
-=======
         protected override sealed string operatorName { get { return safeNormalize ? "Safe Normalize" : "Normalize"; } }
 
         protected override sealed VFXExpression[] BuildExpression(VFXExpression[] inputExpression)
         {
             if (safeNormalize)
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 return new[] { VFXOperatorUtility.SafeNormalize(inputExpression[0]) };
             else
                 return new[] { VFXOperatorUtility.Normalize(inputExpression[0]) };

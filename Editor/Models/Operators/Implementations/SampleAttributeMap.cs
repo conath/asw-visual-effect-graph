@@ -59,11 +59,7 @@ namespace UnityEditor.VFX.Operator
         }
 
         public override IEnumerable<Type> validTypes => new[]
-<<<<<<< HEAD
-{
-=======
         {
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             typeof(bool),
             typeof(float),
             typeof(uint),
@@ -86,15 +82,9 @@ namespace UnityEditor.VFX.Operator
 
             Type outputType = GetOperandType();
             var type = typeof(VFXExpressionSampleAttributeMap<>).MakeGenericType(outputType);
-<<<<<<< HEAD
-            var outputExpr = Activator.CreateInstance(type, new object[]{inputExpression[1], x, y });
-
-            return new[] { (VFXExpression)outputExpr};
-=======
             var outputExpr = Activator.CreateInstance(type, new object[] { inputExpression[1], x, y });
 
             return new[] { (VFXExpression)outputExpr };
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
     }
 }

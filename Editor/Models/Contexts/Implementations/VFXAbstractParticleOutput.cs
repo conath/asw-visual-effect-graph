@@ -489,14 +489,10 @@ namespace UnityEditor.VFX
                     yield return "sort";
                     yield return "frustumCulling";
                 }
-<<<<<<< HEAD
-
-=======
                 if (!usesFlipbook)
                 {
                     yield return "flipbookLayout";
                 }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 if (!subOutput.supportsExcludeFromTAA)
                     yield return "excludeFromTAA";
             }

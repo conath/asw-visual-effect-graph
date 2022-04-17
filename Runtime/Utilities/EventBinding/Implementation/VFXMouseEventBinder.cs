@@ -80,15 +80,9 @@ namespace UnityEngine.VFX.Utility
             {
                 mouseOver = newMouseOver;
                 if (newMouseOver)
-<<<<<<< HEAD
-                    DoOnMouseOver(); 
-                else
-                    DoOnMouseExit(); 
-=======
                     DoOnMouseOver();
                 else
                     DoOnMouseExit();
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             }
         }
 
@@ -199,10 +193,7 @@ namespace UnityEngine.VFX.Utility
         {
             DoOnMouseExit();
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 #endif
     }
 }

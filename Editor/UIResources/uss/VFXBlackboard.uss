@@ -216,8 +216,4 @@ VFXBlackboardCategory > .mainContainer > #sectionHeader
     /* theme-button-background-color */
     border-color: #222222;
     /* -theme-app-toolbar-button-border-color */
-<<<<<<< HEAD:com.unity.visualeffectgraph/Editor Default Resources/uss/VFXBlackboard.uss
 }
-=======
-}
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76:com.unity.visualeffectgraph/Editor/UIResources/uss/VFXBlackboard.uss

@@ -42,11 +42,7 @@ MonoBehaviour:
   m_UIInfos: {fileID: 3}
   m_ParameterInfo: []
   m_ImportDependencies: []
-<<<<<<< HEAD:com.unity.visualeffectgraph/Editor/Templates/Default Subgraph Block.vfxblock
-  m_GraphVersion: 6
-=======
   m_GraphVersion: 8
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76:com.unity.visualeffectgraph/Editor/Templates/DefaultSubgraphBlock.vfxblock
   m_ResourceVersion: 1
   m_SubgraphDependencies: []
   m_CategoryPath: Subgraph Block

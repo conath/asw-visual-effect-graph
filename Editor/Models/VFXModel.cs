@@ -50,14 +50,9 @@ namespace UnityEditor.VFX
             kExpressionInvalidated, // No direct change to the model but a change in connection was propagated from the parents
             kExpressionGraphChanged,// Expression graph must be recomputed
             kUIChanged,             // UI stuff has changed
-<<<<<<< HEAD
-            kUIChangedTransient,    // UI stuff has been changed be does not require serialization 
-            kEnableChanged,         // Node has been enabled/disabled
-=======
             kUIChangedTransient,    // UI stuff has been changed be does not require serialization
             kMaterialChanged,       // Some asset material properties has changed
             kEnableChanged          // Node has been enabled/disabled
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
 
         public new virtual string name { get { return string.Empty; } }
@@ -143,11 +138,7 @@ namespace UnityEditor.VFX
                     {
                         GenerateErrors(reporter);
                     }
-<<<<<<< HEAD
-                    catch(Exception e)
-=======
                     catch (Exception e)
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                     {
                         Debug.LogException(e);
                     }

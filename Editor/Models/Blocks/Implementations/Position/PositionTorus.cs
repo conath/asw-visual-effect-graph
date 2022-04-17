@@ -8,11 +8,7 @@ namespace UnityEditor.VFX.Block
     [VFXInfo(category = "Position", variantProvider = typeof(PositionBaseProvider))]
     class PositionTorus : PositionBase
     {
-<<<<<<< HEAD
-        public override string name { get { return string.Format(base.name,"Torus"); } }
-=======
         public override string name { get { return string.Format(base.name, "Arc Torus"); } }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         protected override float thicknessDimensions { get { return 2.0f; } }
 
         public class InputProperties
@@ -32,16 +28,6 @@ namespace UnityEditor.VFX.Block
             get
             {
                 var allSlots = GetExpressionsFromSlots(this);
-<<<<<<< HEAD
-                foreach (var p in allSlots.Where(e => e.name != "Thickness"))
-                    yield return p;
-
-                var thickness = allSlots.FirstOrDefault(o => o.name == "Thickness").exp;
-                var majorRadius = allSlots.FirstOrDefault(o => o.name == "ArcTorus_majorRadius").exp;
-
-                yield return new VFXNamedExpression(CalculateVolumeFactor(positionMode, majorRadius, thickness), "volumeFactor");
-                yield return new VFXNamedExpression(VFXOperatorUtility.Saturate(inputSlots[0][2].GetExpression() / inputSlots[0][1].GetExpression()), "r"); // Saturate can be removed once degenerated torus are correctly handled
-=======
                 foreach (var p in allSlots)
                     yield return p;
 
@@ -58,7 +44,6 @@ namespace UnityEditor.VFX.Block
                 var transformMatrix = allSlots.FirstOrDefault(o => o.name == "arcTorus_torus_transform").exp;
                 var invFinalTransform = new VFXExpressionTransposeMatrix(new VFXExpressionInverseTRSMatrix(transformMatrix));
                 yield return new VFXNamedExpression(invFinalTransform, "arcTorus_torus_inverseTranspose");
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             }
         }
 
@@ -103,14 +88,6 @@ else
     t = float3(s1_2.x, 0, s1_2.y);
 }
 
-<<<<<<< HEAD
-float s,c;
-sincos(phi,c,s);
-float3 t2 = float3(c * t.x - s * t.y,c * t.y + s * t.x,t.z);";
-
-                outSource += string.Format(composePositionFormatString, "ArcTorus_center + ArcTorus_majorRadius * t2");
-                outSource += string.Format(composeDirectionFormatString, "t2");
-=======
 float s, c;
 sincos(phi, c, s);
 float3 t2 = float3(c * t.x - s * t.y, c * t.y + s * t.x, t.z);
@@ -123,7 +100,6 @@ finalDir = normalize(finalDir);
 ";
                 outSource += string.Format(composePositionFormatString, "finalPos");
                 outSource += string.Format(composeDirectionFormatString, "finalDir");
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
                 return outSource;
             }

@@ -16,13 +16,7 @@ namespace UnityEditor.VFX
     [CanEditMultipleObjects]
     class VFXShaderGraphParticleOutputEditor : VFXContextEditor
     {
-<<<<<<< HEAD
-        //"protected" is only to be listed by VFXModel.GetSettings, we should always use GetOrRefreshShaderGraphObject
-        [SerializeField, VFXSetting]
-        protected ShaderGraphVfxAsset shaderGraph;
-=======
         private MaterialEditor m_MaterialEditor = null;
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
         private bool m_RequireUpdateMaterialEditor = false;
 
@@ -40,10 +34,6 @@ namespace UnityEditor.VFX
             base.OnEnable();
         }
 
-<<<<<<< HEAD
-        public ShaderGraphVfxAsset GetOrRefreshShaderGraphObject()
-        {
-=======
         protected new void OnDisable()
         {
             foreach (VFXShaderGraphParticleOutput output in targets)
@@ -182,7 +172,6 @@ namespace UnityEditor.VFX
 
         public ShaderGraphVfxAsset GetOrRefreshShaderGraphObject()
         {
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             //This is the only place where shaderGraph property is updated or read
             if (shaderGraph == null && !object.ReferenceEquals(shaderGraph, null))
             {
@@ -195,8 +184,6 @@ namespace UnityEditor.VFX
                 }
             }
             return shaderGraph;
-<<<<<<< HEAD
-=======
         }
 
         public override bool hasShadowCasting
@@ -286,7 +273,6 @@ namespace UnityEditor.VFX
             {
                 materialSettings.SyncFromMaterial(transientMaterial);
             }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
 
         public override void GetImportDependentAssets(HashSet<int> dependencies)
@@ -410,10 +396,7 @@ namespace UnityEditor.VFX
             {
                 foreach (var setting in base.filteredOutSettings)
                     yield return setting;
-<<<<<<< HEAD
-=======
 
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                 if (GetOrRefreshShaderGraphObject() != null)
                 {
                     yield return "colorMapping";
@@ -482,9 +465,6 @@ namespace UnityEditor.VFX
             base.CheckGraphBeforeImport();
             // If the graph is reimported it can be because one of its depedency such as the shadergraphs, has been changed.
             if (!VFXGraph.explicitCompile)
-<<<<<<< HEAD
-                ResyncSlots(true);
-=======
             {
                 ResyncSlots(true);
 
@@ -493,7 +473,6 @@ namespace UnityEditor.VFX
                     GetOrRefreshShaderGraphObject().generatesWithShaderGraph)
                     Invalidate(InvalidationCause.kUIChangedTransient);
             }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
 
         protected override IEnumerable<VFXPropertyWithValue> inputProperties
@@ -604,11 +583,7 @@ namespace UnityEditor.VFX
             {
                 foreach (var sgProperty in shaderGraph.properties)
                 {
-<<<<<<< HEAD
-                    if( inputSlots.Any(t=>t.property.name == sgProperty.referenceName))
-=======
                     if (inputSlots.Any(t => t.property.name == sgProperty.referenceName))
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                         yield return slotExpressions.First(o => o.name == sgProperty.referenceName);
                 }
             }
@@ -685,10 +660,6 @@ namespace UnityEditor.VFX
                 }
                 break;
                 case VFXDeviceTarget.GPU:
-<<<<<<< HEAD
-                    var shaderGraph = GetOrRefreshShaderGraphObject();
-=======
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
                     if (shaderGraph != null)
                     {
                         foreach (var tex in shaderGraph.textureInfos)
@@ -947,11 +918,7 @@ namespace UnityEditor.VFX
                         callSG.builder.Append($"\n{shaderGraph.outputStructName} OUTSG = {shaderGraph.evaluationFunctionName}(INSG");
 
                         if (graphCode.properties.Any())
-<<<<<<< HEAD
-                            callSG.builder.Append("," + graphCode.properties.Select(t => t.GetHLSLVariableName(true)).Aggregate((s, t) => s + ", " + t));
-=======
                             callSG.builder.Append("," + graphCode.properties.Select(t => t.GetHLSLVariableName(true, UnityEditor.ShaderGraph.GenerationMode.ForReals)).Aggregate((s, t) => s + ", " + t));
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
                         callSG.builder.AppendLine(");");
 

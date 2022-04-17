@@ -64,13 +64,10 @@ bool IsSphereOutsideFrustum(float3 pos, float radius, float4 frustumPlanes[6])
     return outside;
 }
 #endif
-<<<<<<< HEAD
-=======
 
 #if HAS_STRIPS
 ${VFXDeclareGetStripTangent}
 #endif
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
 
 [numthreads(NB_THREADS_PER_GROUP,1,1)]
 void CSMain(uint3 groupId		: SV_GroupID,

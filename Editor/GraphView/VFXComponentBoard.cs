@@ -442,23 +442,6 @@ namespace UnityEditor.VFX.UI
         }
 
         public void OnVisualEffectComponentChanged(IEnumerable<VisualEffect> visualEffects)
-<<<<<<< HEAD
-        {
-            OnSelectionChanged();
-            if (m_AttachedComponent != null
-                && visualEffects.Contains(m_AttachedComponent)
-                && m_AttachedComponent.visualEffectAsset != controller.graph.visualEffectResource.asset)
-            {
-                //The Visual Effect Asset has been changed and is no longer valid, we don't want to modify capacity on the wrong graph. We have to detach.
-                m_View.attachedComponent = null;
-            }
-        }
-
-        void OnAttachToPanel(AttachToPanelEvent e)
-        {
-            OnSelectionChanged();
-            Selection.selectionChanged += OnSelectionChanged;
-=======
         {
             if (m_AttachedComponent != null
                 && visualEffects.Contains(m_AttachedComponent)
@@ -467,7 +450,6 @@ namespace UnityEditor.VFX.UI
                 //The Visual Effect Asset has been changed and is no longer valid, we don't want to modify capacity on the wrong graph. We have to detach.
                 m_View.attachedComponent = null;
             }
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         }
 
         VisualEffect m_AttachedComponent;
@@ -503,14 +485,6 @@ namespace UnityEditor.VFX.UI
             m_Subtitle.text = "Select a Game Object running this VFX";
             m_SubtitleIcon.style.display = DisplayStyle.Flex;
 
-<<<<<<< HEAD
-            m_AttachButton.text = m_AttachedComponent != null ? "Detach" : "Attach";
-        }
-
-        public void Detach()
-        {
-=======
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             if (m_AttachedComponent != null)
             {
                 m_AttachedComponent.playRate = 1;
@@ -581,18 +555,9 @@ namespace UnityEditor.VFX.UI
                     m_DebugUI.Clear();
                 }
 
-                var debugMode = VFXUIDebug.Modes.None;
-                if (m_DebugUI != null)
-                {
-                    debugMode = m_DebugUI.GetDebugMode();
-                    m_DebugUI.Clear();
-                }
-
                 m_DebugUI = new VFXUIDebug(m_View);
                 m_DebugUI.SetVisualEffect(m_AttachedComponent);
                 m_DebugUI.SetDebugMode(debugMode, this, true);
-<<<<<<< HEAD
-=======
 
                 m_RootElement.SetEnabled(true);
                 m_SubtitleIcon.style.display = DisplayStyle.None;
@@ -601,7 +566,6 @@ namespace UnityEditor.VFX.UI
                 RefreshInitializeErrors();
 
                 return true;
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
             }
 
             return false;

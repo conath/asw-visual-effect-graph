@@ -41,10 +41,7 @@ namespace UnityEngine.VFX.Utility
         {
             Reload();
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 30e14a2ca18f7c4c9903767895c1ca15d1af6c76
         static private void SafeDestroy(Object toDelete)
         {
 #if UNITY_EDITOR
